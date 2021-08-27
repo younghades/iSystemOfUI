@@ -17,7 +17,7 @@ namespace iSystemOfUI.Models
         SqlDataAdapter adt;
         public clsConnect()
         {
-                connectionstring = ConfigurationManager.ConnectionStrings["dbNamHaiContrucsion"].ConnectionString;
+                connectionstring = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 cnn = new SqlConnection(connectionstring);
                 cnn.Open();
         }

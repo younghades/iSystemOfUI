@@ -1,0 +1,910 @@
+﻿
+@{
+    ViewBag.Title = "Đơn Đặt Hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card shadow">
+    <div class="card-header py-3">
+        <div class="row">
+            <div class="col">
+                <p class="text-primary m-0 fw-bold">Đặt mua hàng hóa</p>
+            </div>
+            <div class="col text-end"><button id="ElementBtnDuyetHangLoatId" class="btn btn-primary d-none" type="button">Duyệt hàng loạt</button></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+                <div class="row">
+                    <div class="col">
+                        <div class="dataTables_length" aria-controls="dataTable">
+                            <label class="form-label">
+                                Loại:&nbsp;<select id="ElementSelectionPOPSatusId" class="d-inline-block form-select form-select-sm">
+                                </select>&nbsp;
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="dataTable_length" class="dataTables_length d-none" aria-controls="dataTable">
+                            <label class="form-label">
+                                NCC:&nbsp;<select id="ElementNhaCungCapId" class="d-inline-block form-select form-select-sm">
+                                </select>&nbsp;
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Tìm kiếm sản phẩm"></label></div>
+            </div>
+        </div>
+        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+        </div>
+        <div class="row">
+            <div class="col-md-6 align-self-center">
+                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+            </div>
+            <div class="col-md-6">
+                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal 1---------------------------------------------------------------------------------->
+<div class="modal fade" tabindex="-1" id="modal-1" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen" role="document">
+        <form id="form_modal1">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row" style="width: 95%;">
+                        <div class="col-4">
+                            <h5 class="modal-title">Thông tin sản xuất</h5>
+                        </div>
+                        <div class="col-4">
+                            <select required id="SelectionModal1NhaCungCap" name="ManufactureCode" class="form-select">
+                            </select>
+                        </div>
+                        <div class="col-4"></div>
+                    </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="table-responsive" style="width: 297mm;height: 210mm;">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" style="width: 222mm;" rowspan="13">
+                                        <div id="someId" class="rounded position-relative vPreviewImage" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                    </td>
+                                    <th class="PurchaseOrderCodeModal" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;"></th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductCodeModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductNameModal" style="width: 70mm;font-size: 14px;padding: 2px;"> </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductSaleQuantityModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break" style="width: 70mm;font-size: 14px;padding: 2px;">Người tạo: Quách Vệ Hùng</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break" style="width: 70mm;font-size: 14px;padding: 2px;">Kiểm duyệt: Lý Huỳnh</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-uppercase" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;">thông tin sản phẩm</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductSizeModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductMaterialModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductColorModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break text-start ProductNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-uppercase" style="width: 70mm;font-weight: bold;text-decoration: underline;font-size: 13px;padding: 3px;">ghi chú đơn hàng</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break text-start PurchaseOrderNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"><br><br></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 72mm;">
+                                        <div id="someId" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-3" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-2" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-1" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Hủy</button>
+                    <button class="btn btn-primary" type="submit">Lưu</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END modal 1---------------------------------------------------------------------------------->
+<!-- modal 2---------------------------------------------------------------------------------->
+<div class="modal fade" tabindex="-1" id="modal-2" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen" role="document">
+        <form id="form_modal2">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="row" style="width: 95%;">
+                        <div class="col-4">
+                            <h5 class="modal-title">Thông tin sản xuất</h5>
+                        </div>
+                        <div class="col-4">
+                            <select id="SelectionModal2NhaCungCap" required name="ManufactureCode" class="form-select">
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <input name="OrderQuantity" required class="form-control" type="number" min="1" placeholder="Nhập số lượng cần đặt....">
+                        </div>
+                    </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="table-responsive" style="width: 297mm;height: 210mm;">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" style="width: 222mm;" rowspan="13">
+                                        <div id="someId-4" class="rounded position-relative vPreviewImage" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                    </td>
+                                    <th class="PurchaseOrderCodeModal" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;">ORDER: #000000001</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductCodeModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductNameModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductSaleQuantityModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break" style="width: 70mm;font-size: 14px;padding: 2px;">Người tạo: Quách Vệ Hùng</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break" style="width: 70mm;font-size: 14px;padding: 2px;">Kiểm duyệt: Lý Huỳnh</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-uppercase" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;">thông tin sản phẩm</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductSizeModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductMaterialModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break ProductColorModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-break text-start ProductNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"></td>
+                                </tr>
+                                <tr>
+                                    <th class="text-uppercase" style="width: 70mm;font-weight: bold;text-decoration: underline;font-size: 13px;padding: 3px;">ghi chú đơn hàng</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-break text-start PurchaseOrderNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"><br><br></td>
+                                </tr>
+                                <tr>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-5" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-3" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-2" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                    <td style="width: 72mm;">
+                                        <div id="someId-1" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row" style="width: 90%;">
+                        <div class="col-8">
+                            <input id="InputTextYKienYeuCauChinhSua" class="form-control" type="text" placeholder="Nhập ý kiến phê duyệt nếu yêu cầu chỉnh sửa">
+                        </div>
+                        <div class="col-4 text-end">
+                            <button id="btnYeuCauChinhSuaModal2" class="btn btn-light" type="button">Yêu cầu sửa chữa</button>
+                            <button class="btn btn-primary" type="submit">Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END modal 2---------------------------------------------------------------------------------->
+<!-- modal 3---------------------------------------------------------------------------------->
+<div class="modal fade" tabindex="-1" id="modal-3" style="display: none;" aria-hidden="true">
+    <form id="form_modal3">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cập nhật ngày giao hàng</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4 text-end">
+                            <p style="margin-bottom: 0px;">Ngày giao hàng:</p>
+                        </div>
+                        <div class="col-8">
+                            <input name="DeliveryDate" required class="form-control" type="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Hủy</button>
+                    <button id="btnLuuModal3" class="btn btn-primary" type="submit">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- END modal 3---------------------------------------------------------------------------------->
+<!-- modal 4---------------------------------------------------------------------------------->
+<div class="modal fade" tabindex="-1" id="modal-4" style="display: none;" aria-hidden="true">
+    <form id="form_modal4">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Số lượng thực nhập</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-4 text-end align-self-center">
+                            <p style="margin-bottom: 0px;">Số lượng:</p>
+                        </div>
+                        <div class="col-8">
+                            <input name="OrderQuantityDeliveryed" min="1" required class="form-control" type="number" placeholder="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Hủy</button>
+                    <button id="btnLuuModal4" class="btn btn-primary" type="submit">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- END modal 4---------------------------------------------------------------------------------->
+<!-- modal 5---------------------------------------------------------------------------------->
+<div class="modal fade" tabindex="-1" id="modal-5" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Trả hàng</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="form_modal5">
+                <div class="modal-body">
+                    <div class="row" style="margin-bottom: 6px;">
+                        <div class="col-4 text-end align-self-center">
+                            <p style="margin-bottom: 0px;">Số lượng:</p>
+                        </div>
+                        <div class="col-8">
+                            <input required name="OrderQuantityReturned" min="1" class="form-control" type="number" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 6px;">
+                        <div class="col-4 text-end align-self-center">
+                            <p style="margin-bottom: 0px;">Lý do:</p>
+                        </div>
+                        <div class="col-8">
+                            <textarea name="OrderQuantityReturnedReason" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-end align-self-center">
+                            <p style="margin-bottom: 0px;">Hình ảnh:</p>
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <div class="rounded position-relative vPreviewImage" style="width: 96px;height: 96px;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input class="form-control vInputImage" type="file" style="width: 96px;height: 96px;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="rounded position-relative vPreviewImage" style="width: 96px;height: 96px;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input class="form-control vInputImage" type="file" style="width: 96px;height: 96px;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Hủy</button>
+                    <button class="btn btn-primary" type="submit">Lưu</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- END modal 5---------------------------------------------------------------------------------->
+
+
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(() => {
+            // Variable
+            //--------------------------------------------------------
+            // api đơn hàng
+            let routePurchaseOrder = "/api/PurchaseOrder/"
+
+            // các elementId sẽ sử dụng
+            //------------------------------------------------------
+            // selection trang thái đơn hàng
+            let ElementSelectionPOPSatusId = "ElementSelectionPOPSatusId"
+            // nút duyệt đơn hàng hàng loạt khi trạng thái đơn hàng bằng 2
+            let ElementBtnDuyetHangLoatId = "ElementBtnDuyetHangLoatId"
+            // thanh selection nhà cung cấp khi POPstatus = 3 && 4
+            let ElementSelectionNhaCungCapId = "ElementNhaCungCapId"
+            // div selection nhà cung cấp khi POPstatus = 3 && 4
+            let ElementDivNhaCungCapId = "dataTable_length"
+
+
+
+            // modal 1
+            //-------------------------------------
+            // form modal 1 id
+            let form_modal1ID = "form_modal1"
+            // thanh selection nhà cung cấp trong modal 1
+            let ElementSelectionModal1NhaCungCap = "SelectionModal1NhaCungCap"
+
+            // modal 2
+            //-------------------------------------
+
+            // form modal 2 id
+            let form_modal2ID = "form_modal2"
+            // thanh selection nhà cung cấp trong modal 2
+            let ElementSelectionModal2NhaCungCap = "SelectionModal2NhaCungCap"
+
+            // nút yêu cầu chỉnh sửa trong modal 2
+            let btnYeuCauChinhSuaModal2 = "btnYeuCauChinhSuaModal2"
+            // input text yêu cầu chỉnh sửa trong modal 2
+            let InputTextYKienYeuCauChinhSua = "InputTextYKienYeuCauChinhSua"
+
+            // modal3
+            //------------------------------------------------
+            // form modal 3 id
+            let form_modal3ID = "form_modal3"
+
+            // modal 4
+            //------------------------------------------------
+            // form modal 3 id
+            let form_modal4ID = "form_modal4"
+
+            // modal 5
+            //-----------------------------------------------------
+            // form modal 5 ID
+            var form_modal5ID = "form_modal5"
+
+            //------------------------------------------------------
+            // END elementId sẽ sử dụng
+
+
+            // lưu thông tin po đang được chọn
+            let PurchaseOrderSelected = {}
+
+            // danh sách đơn đặt hàng
+            let arrPurchaseOrders = []
+
+            // danh sách nhà cung cấp
+            let arrManufactures = getManufactures()
+
+            // load trạng thái Po status lên element select
+            loadPOPSatus(ElementSelectionPOPSatusId)
+            // load nhà cung cấp lên element select
+            loadManufacture(ElementSelectionNhaCungCapId, true)
+            // load nhà cung cấp lên
+            loadManufacture(ElementSelectionModal1NhaCungCap, true)
+
+
+
+            // Function data
+            //----------------------------------------------------------
+
+            // get danh sách trạng thái đơn hàng
+            function loadPOPSatus(elementId, SelectDefaultValue) {
+                $.ajax({
+                    url: routePurchaseOrder + "GetPurchaseOrderStatus",
+                    method: "GET",
+                }).done(data => {
+                    loadOptions(elementId, data, "Code", "Name", false, SelectDefaultValue)
+                    loadData()
+                })
+            }
+
+            function loadManufacture(elementId, baseRow, SelectDefaultValue) {
+                loadOptions(elementId, arrManufactures, "Code", "Name", baseRow, SelectDefaultValue)
+            }
+
+            function getManufactures() {
+                return $.ajax({
+                    url: routePurchaseOrder + "GetManufacture",
+                    method: "GET",
+                    async: false
+                }).responseJSON
+            }
+
+            function getPurchaseOrder(PurchaseOrderStatusCode) {
+                return $.ajax({
+                    url: routePurchaseOrder + "GetPurchaseOrder",
+                    method: "GET",
+                    data: {
+                        PurchaseOrderStatusCode: PurchaseOrderStatusCode
+                    },
+                    async: false
+                }).responseJSON
+            }
+
+
+            function loadData() {
+                arrPurchaseOrders = getPurchaseOrder($(`#${ElementSelectionPOPSatusId}`).val())
+                LoadDataTableByPurchaseOrderStatusCode($(`#${ElementSelectionPOPSatusId}`).val())
+            }
+
+
+
+
+
+            // Function support
+            //----------------------------------------------------------------
+            // ẩn hoặc hiện các element dựa vào elementId
+            function ShowElementById(elementId, ShowStatus) {
+                if (!ShowStatus) {
+                    $(`#${elementId}`).addClass("d-none")
+                } else {
+                    $(`#${elementId}`).removeClass("d-none")
+                }
+            }
+
+            function hideAllModal() {
+                $('.modal').modal('hide');
+            }
+
+
+            // tạo bảng và hiển thị dữ liệu
+            function DrawTable(data, TableId, Headers, ColumnValues, BtnIndex) {
+                let html = `<table class="table my-0" id="${TableId}">  <thead> <tr>`
+                Headers.forEach(item => {
+                    html += `<th>${item}</th>`
+                })
+                html += `<th scope="col"></th>`
+                html += ` </tr> </thead><tbody>`
+                data.forEach((item, index) => {
+                    html += `<tr>`
+                    ColumnValues.forEach(itemClName => {
+                        if (typeof itemClName == "string") {
+                            html += `<td>${item[itemClName]}</td>`
+                        } else {
+                            let finalClValue = item;
+                            itemClName.forEach((itemClName_child) => {
+                                finalClValue = finalClValue[itemClName_child];
+                            });
+                            html += `<td>${finalClValue}</td>`
+                        }
+                    })
+                    html += `<td>`
+                    // load button tùy vào trạng thái của PO
+                    // set data-id của nút là PurchaseOrderCode và ProductCode
+                    html += loadBtnElementTemplates(BtnIndex, item.PurchaseOrderCode + "_" + item.ProductCode)
+                    html += `</td>`
+
+                    html += `</tr>`
+                })
+                html += `  </tbody> </table>`
+                return html
+            }
+
+            // hàm load các nút tùy vào trạng thái của PO
+            function loadBtnElementTemplates(index, dataId) {
+                // danh sách các nút mẫu theo trạng thái của PO
+                let BtnElementTemplates = [
+                    `<a href="#" data-id="${dataId}" data-modal="1" class="BtnElementTemplates" data-bs-target="#modal-1" data-bs-toggle="modal"><i class="icon-drawer" style="font-size: 24px;"></i></a>`,
+                    `<a href="#" data-id="${dataId}" data-modal="2" class="BtnElementTemplates" data-bs-target="#modal-2" data-bs-toggle="modal"><i class="material-icons" style="font-size: 24px;">recent_actors</i></a>`,
+                    `<a href="#" data-id="${dataId}" data-modal="3" class="BtnElementTemplates" data-bs-target="#modal-3" data-bs-toggle="modal"><i class="material-icons" style="font-size: 24px;">date_range</i></a>`,
+                    `<a href="#" data-id="${dataId}" data-modal="4" class="BtnElementTemplates" data-bs-target="#modal-4" data-bs-toggle="modal"><i class="fas fa-file-import" style="font-size: 24px;"></i></a>`,
+                    `<a href="#" data-id="${dataId}" data-modal="5" class="BtnElementTemplates" data-bs-target="#modal-5" data-bs-toggle="modal"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-arrow-return-left" style="font-size: 24px;"> <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"></path> </svg></a>`
+                ]
+                return BtnElementTemplates[index]
+            }
+
+            // hàm lọc dữ liệu và thêm một số thông tin cần thiết cho các đơn hàng
+            function FilterDataByPurchaseOrderStatusCode(PurchaseOrderStatusCode) {
+                let dataAfterFilter = arrPurchaseOrders.filter(item => item.PurchaseOrderStatusCode == PurchaseOrderStatusCode)
+                dataAfterFilter.forEach(item => {
+
+                    //thêm trường dữ liệu tính số lượng hàng nhà cung cấp chưa giao
+                    if (item.OrderQuantity > item.OrderQuantityDeliveryed) {
+                        item.NotOrderQuantityDeliveryYet = item.OrderQuantity - item.OrderQuantityDeliveryed
+                    } else {
+                        item.NotOrderQuantityDeliveryYet = 0
+                    }
+
+                    // thêm trường dữ liệu số lượng hàng nhập kho
+                    item.QuantityImportToWarehouse = item.OrderQuantityDeliveryed - item.OrderQuantityReturned
+                    // thêm trường mô tả chi tiết sản phẩm
+                    item.ProductDetails = item.ProductTypeName + " " + item.ProductName + " " + item.ProductWidth + "x" + item.ProductHeight + "x" + item.ProductDepth
+                    if (item.ManufactureCode != null) {
+                        // thêm tên nhà cung cấp nếu có
+                        item.ManufactureName = arrManufactures.find(ma => ma.Code == item.ManufactureCode).Name
+                    } else {
+                        item.ManufactureName = null
+                    }
+                })
+                return dataAfterFilter
+            }
+
+            // tạo bảng dữ liệu và hiển thị bảng dữ liệu từ dữ liệu đã load từ trước
+            function LoadDataTableByPurchaseOrderStatusCode(PurchaseOrderStatusCode) {
+                // ẩn hoặc hiển thị div nhà cung câp
+                if (PurchaseOrderStatusCode == 5 || PurchaseOrderStatusCode == 4) {
+                    ShowElementById(ElementDivNhaCungCapId, true)
+                    $(`#${ElementSelectionNhaCungCapId}`).val("")
+                } else {
+                    ShowElementById(ElementDivNhaCungCapId, false)
+                }
+
+                // ẩn hoặc hiển thị nút duyệt đơn hàng hàng loạt
+                if (PurchaseOrderStatusCode == 2) {
+                    ShowElementById(ElementBtnDuyetHangLoatId, true)
+                } else {
+                    ShowElementById(ElementBtnDuyetHangLoatId, false)
+                }
+
+                // lọc dữ liệu theo trạng thái đơn hàng và thêm các thông tin cần thiết
+                var dataAfterFilter = FilterDataByPurchaseOrderStatusCode(PurchaseOrderStatusCode)
+
+                if (PurchaseOrderStatusCode > 0 && PurchaseOrderStatusCode < 4) {
+                    DrawDataTableModal1To3(dataAfterFilter, PurchaseOrderStatusCode)
+                } else if (PurchaseOrderStatusCode == 4) {
+                    DrawDataTableModal4(dataAfterFilter, PurchaseOrderStatusCode)
+                } else {
+                    DrawDataTableModal5(dataAfterFilter, PurchaseOrderStatusCode)
+                }
+
+            }
+
+            // datatable cho trạng thái đơn hàng từ 1 đến 3
+            function DrawDataTableModal1To3(dataAfterFilter, PurchaseOrderStatusCode) {
+                // tạo bảng dữ liệu
+                $("#dataTable table").remove()
+                $("#dataTable").append(
+                    DrawTable(
+                        dataAfterFilter,
+                        "",
+                        ["Đơn hàng bán", "Sản phẩm", "NCC", "SL bán", "SL tồn", "SL đặt", "Ngày giao"],
+                        [
+                            "PurchaseOrderCode", "ProductDetails", "ManufactureName", "SaleQuantity", "ProductInventory", "OrderQuantity", "PurchaseOrderProductDeliveryDate"
+                        ],
+                        PurchaseOrderStatusCode - 1
+                    )
+                )
+            }
+
+            // datatable cho trạng thái đơn hàng 4
+            function DrawDataTableModal4(dataAfterFilter, PurchaseOrderStatusCode) {
+                // tạo bảng dữ liệu
+                $("#dataTable table").remove()
+                $("#dataTable").append(
+                    DrawTable(
+                        dataAfterFilter,
+                        "",
+                        ["Đơn hàng bán", "Sản phẩm", "NCC", "SL đặt", "SL giao", "Còn lại", "Ngày giao"],
+                        [
+                            "PurchaseOrderCode", "ProductDetails", "ManufactureName", "OrderQuantity", "OrderQuantityDeliveryed", "NotOrderQuantityDeliveryYet", "PurchaseOrderProductDeliveryDate"
+                        ],
+                        PurchaseOrderStatusCode - 1
+                    )
+                )
+            }
+
+            // datatable cho trạng thái đơn hàng 5
+            function DrawDataTableModal5(dataAfterFilter, PurchaseOrderStatusCode) {
+                // tạo bảng dữ liệu
+                $("#dataTable table").remove()
+                $("#dataTable").append(
+                    DrawTable(
+                        dataAfterFilter,
+                        "",
+                        ["Đơn hàng bán", "Sản phẩm", "NCC", "SL giao", "SL trả", "Nhập kho", "Ngày giao"],
+                        [
+                            "PurchaseOrderCode", "ProductDetails", "ManufactureName", "OrderQuantityDeliveryed", "OrderQuantityReturned", "QuantityImportToWarehouse", "PurchaseOrderProductDeliveryDate"
+                        ],
+                        PurchaseOrderStatusCode - 1
+                    )
+                )
+            }
+
+
+            // hàm load các thông tin của đơn hàng được chọn lên modal 1 và 2
+            function loadModal1_2Details() {
+                // set mã đơn hàng cho modal 1, 2
+                $(".PurchaseOrderCodeModal").html("#" + PurchaseOrderSelected.PurchaseOrderCode)
+                // set mã sản phẩm
+                $(".ProductCodeModal").html("Mã SP: " + PurchaseOrderSelected.ProductCode)
+                // set tên sản phẩm
+                $(".ProductNameModal").html("Tên SP: " + PurchaseOrderSelected.ProductName)
+                // set số lượng khách mua
+                $(".ProductSaleQuantityModal").html("Số lượng: " + PurchaseOrderSelected.SaleQuantity)
+                // set kích thước
+                $(".ProductSizeModal").html("Kích thước: " + PurchaseOrderSelected.ProductWidth + "x" + PurchaseOrderSelected.ProductHeight + "x" + PurchaseOrderSelected.ProductDepth)
+                // set vật liệu sản phẩm
+                $(".ProductMaterialModal").html("Vật liệu: " + PurchaseOrderSelected.ProductMaterialName)
+                // set màu săc sản phẩm
+                $(".ProductColorModal").html("Màu sắc: " + PurchaseOrderSelected.ProductColorName)
+                // set ghi chú đặc biệt của sản phẩm trong đơn hàng
+                $(".ProductNotesModal").html("Ghi chú: " + PurchaseOrderSelected.PurchaseOrderProductNotes)
+                // set ghi chú của toàn đơn hàng
+                $(".PurchaseOrderNotesModal").html(PurchaseOrderSelected.PurchaseOrderNotes)
+
+            }
+
+            // Event
+            //----------------------------------------------------
+            // load danh sách các đơn hàng theo trang thái vừa thay đổi
+            $(`#${ElementSelectionPOPSatusId}`).change(e => {
+                // get dữ liệu danh sách các đơn hàng theo trạng thái
+                getPurchaseOrder($(e.target).val())
+                // tạo bảng dữ liệu và hiển thị bảng dữ liệu vừa load ở bước trên
+                LoadDataTableByPurchaseOrderStatusCode($(e.target).val())
+            })
+
+
+            // load danh sách các đơn hàng theo mã nhà cung cấp (trạng thái 4 5 mới có)
+            $(`#${ElementSelectionNhaCungCapId}`).change(e => {
+                // clone danh sách đơn hàng
+                var data = [...arrPurchaseOrders]
+                if ($(e.target).val() != "") {
+                    data = data.filter(item => item.ManufactureCode == $(e.target).val())
+                } else {
+                    data = data.filter(item => item.PurchaseOrderStatusCode == $(`#${ElementSelectionPOPSatusId}`).val())
+                }
+                if ($(`#${ElementSelectionPOPSatusId}`).val() == 4) {
+                    DrawDataTableModal4(data, $(`#${ElementSelectionPOPSatusId}`).val())
+                } else {
+                    DrawDataTableModal5(data, $(`#${ElementSelectionPOPSatusId}`).val())
+                }
+
+            })
+
+
+            // model Action
+            //-------------------------------------------------------------------------------------------
+
+            // load thông tin model khi ấn nút mở model
+            $(document).on("click", ".BtnElementTemplates", e => {
+                let datamodel = $(e.currentTarget).attr("data-modal")
+                //data-id của nút là PurchaseOrderCode và ProductCode
+                let dataid = $(e.currentTarget).attr("data-id")
+                // lấy mã chi tiết đơn hàng được chọn
+                let PurchaseOrderCode = dataid.split("_")[0]
+                // lấy mã sản phẩm trong đơn hàng được chọn
+                let ProductCode = dataid.split("_")[1]
+
+                // gán giá trị của PO được chọn cho biến toàn cục
+                PurchaseOrderSelected = arrPurchaseOrders.find(item => item.PurchaseOrderCode == PurchaseOrderCode && item.ProductCode == ProductCode)
+
+                if (datamodel == "1" || datamodel == "2") {
+                    // load các thông tin của đơn hàng được chọn lên modal 1 và 2
+                    loadModal1_2Details()
+                }
+                // nếu đơn hàng ở trạng thái chờ xác nhận, load thanh nhà cung câp trong modal 2 dựa vào nhà cung cấp đã đã chọn trước đó của sản phẩm
+                if (datamodel == "2") {
+                    loadManufacture(ElementSelectionModal2NhaCungCap, false, PurchaseOrderSelected.ManufactureName)
+                }
+
+            })
+
+            // ấn nút lưu thông tin ở modal 1
+            $(`#${form_modal1ID}`).submit(e => {
+                e.preventDefault()
+                let data = $(e.target).serializeFormJSON()
+                data.ProductCode = PurchaseOrderSelected.ProductCode
+                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+                $.ajax({
+                    url: routePurchaseOrder + "PutPurchaseOrderProductModal1",
+                    method: "PUT",
+                    data: data
+                }).done(() => {
+                    // load dữ liệu
+                    hideAllModal()
+                    loadData()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Đã lưu thay đổi',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+            })
+
+
+            // ấn nút lưu thông tin ở modal 2
+            $(`#${form_modal2ID}`).submit(e => {
+                e.preventDefault()
+                let data = $(e.target).serializeFormJSON()
+                data.ProductCode = PurchaseOrderSelected.ProductCode
+                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+                $.ajax({
+                    url: routePurchaseOrder + "PutPurchaseOrderProductModal2",
+                    method: "PUT",
+                    data: data
+                }).done(() => {
+                    // load dữ liệu
+                    hideAllModal()
+                    loadData()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Đã lưu thay đổi',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+
+            })
+
+
+
+            // ấn nút yêu cầy chỉnh sửa thông tin ở modal 2
+            $(`#${btnYeuCauChinhSuaModal2}`).click(e => {
+                // lấy nội dung yêu cầu chỉnh sửa
+                let NoteEdit = $(`#${InputTextYKienYeuCauChinhSua}`).val()
+                // nếu nội dung yêu cầu chỉnh sửa rỗng thì yêu cầu nhập
+                if (NoteEdit == "") {
+                    Swal.fire({
+                        title: 'Vui lòng nhập nội dung yêu cầu chỉnh sửa',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+                }
+                else {
+                    // update thông tin nhà cung cấp
+                    $.ajax({
+                        url: routePurchaseOrder + "PutPurchaseOrderProductModal2",
+                        method: "PUT",
+                        data: {
+                            ProductCode: PurchaseOrderSelected.ProductCode,
+                            PurchaseOrderCode: PurchaseOrderSelected.PurchaseOrderCode,
+                            NoteEdit: NoteEdit
+                        }
+                    }).done(() => {
+                        // load dữ liệu
+                        hideAllModal()
+                        loadData()
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Đã lưu thay đổi',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                }
+            })
+
+            // ấn nút lưu thông tin ở modal 3
+            $(`#${form_modal3ID}`).submit(e => {
+                e.preventDefault()
+                let data = $(e.target).serializeFormJSON()
+                data.ProductCode = PurchaseOrderSelected.ProductCode
+                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+                $.ajax({
+                    url: routePurchaseOrder + "PutPurchaseOrderProductModal3",
+                    method: "PUT",
+                    data: data
+                }).done(() => {
+                    // load dữ liệu
+                    hideAllModal()
+                    loadData()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Đã lưu thay đổi',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+            })
+
+
+
+            // ấn nút lưu thông tin ở modal 4
+            $(`#${form_modal4ID}`).submit(e => {
+                e.preventDefault()
+                let data = $(e.target).serializeFormJSON()
+                data.ProductCode = PurchaseOrderSelected.ProductCode
+                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+                $.ajax({
+                    url: routePurchaseOrder + "PutPurchaseOrderProductModal4",
+                    method: "PUT",
+                    data: data
+                }).done(() => {
+                    // load dữ liệu
+                    hideAllModal()
+                    loadData()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Đã lưu thay đổi',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+            })
+
+
+            // ấn nút lưu thông tin ở modal 5
+            $(`#${form_modal5ID}`).submit(e => {
+                e.preventDefault()
+                let data = $(e.target).serializeFormJSON()
+                data.ProductCode = PurchaseOrderSelected.ProductCode
+                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+
+                $.ajax({
+                    url: routePurchaseOrder + "PutPurchaseOrderProductModal5",
+                    method: "PUT",
+                    data: data
+                }).done(() => {
+                    // load dữ liệu
+                    hideAllModal()
+                    loadData()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Đã lưu thay đổi',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+            })
+        })
+    </script>
+}
