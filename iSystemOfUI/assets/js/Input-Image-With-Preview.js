@@ -26,7 +26,7 @@
     $('.vClearPreviewImage').click(function(event) {
         let $parent = $(this).parent();
         event.currentTarget.classList.add('d-none');
-        $parent.css('background-image', `url('/input_image_preview/upload_image.png')`);
+        $parent.css('background-image', `url('/assets/img/input_image_preview/upload_image.png')`);
         $parent.find('input').val(null);
         $parent.trigger('ip.img.clear', [$parent.attr('input-data-index')]);
     });

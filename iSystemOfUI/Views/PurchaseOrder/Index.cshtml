@@ -494,15 +494,17 @@
                 data.forEach((item, index) => {
                     html += `<tr>`
                     ColumnValues.forEach(itemClName => {
+                        var tdValue = ""
                         if (typeof itemClName == "string") {
-                            html += `<td>${item[itemClName]}</td>`
+                            tdValue= item[itemClName]
                         } else {
                             let finalClValue = item;
                             itemClName.forEach((itemClName_child) => {
                                 finalClValue = finalClValue[itemClName_child];
                             });
-                            html += `<td>${finalClValue}</td>`
+                            tdValue = finalClValue
                         }
+                        html += `<td data-bs-toggle="tooltip" data-bss-tooltip="" title="${item.CustomerCode} - ${item.CustomerName}; Trạng thái: ${item.PurchaseOrderStatusName}; Ngày giao: ${item.PurchaseOrderDeliveryDate}; Yêu cầu chỉnh sửa: ${item.PurchaseOrderProductNoteEdit}">${tdValue}</td>`
                     })
                     html += `<td>`
                     // load button tùy vào trạng thái của PO
