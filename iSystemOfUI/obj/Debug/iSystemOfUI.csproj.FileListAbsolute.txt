@@ -54,8 +54,8 @@ D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\roslyn\vbc.exe.config
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\roslyn\vbc.rsp
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\roslyn\VBCSCompiler.exe
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\roslyn\VBCSCompiler.exe.config
-D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\obj\Debug\iSystemOfUI.csprojAssemblyReference.cache
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\EntityFramework.dll
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\EntityFramework.SqlServer.dll
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\EntityFramework.xml
 D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\bin\EntityFramework.SqlServer.xml
+D:\Project\iSystemOfUI\iSystemOfUI\iSystemOfUI\obj\Debug\iSystemOfUI.csprojAssemblyReference.cache

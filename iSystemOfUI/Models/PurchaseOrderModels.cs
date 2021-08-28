@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -21,19 +22,54 @@ namespace iSystemOfUI.Models.PurchaseOrderModels
         }
 
         public virtual DbSet<tblManufacture> tblManufactures { get; set; }
-        public virtual DbSet<tblPurchaseOrder> tblPurchaseOrders { get; set; }
         public virtual DbSet<tblPurchaseOrderProduct> tblPurchaseOrderProducts { get; set; }
         public virtual DbSet<tblPurchaseOrderProductComponent> tblPurchaseOrderProductComponents { get; set; }
         public virtual DbSet<tblPurchaseOrderProductReturneImage> tblPurchaseOrderProductReturneImages { get; set; }
         public virtual DbSet<tblPurchaseOrderStatus> tblPurchaseOrderStatus { get; set; }
-        public virtual DbSet<tblWarehouse> tblWarehouses { get; set; }
-        public virtual DbSet<tblWarehouseProduct> tblWarehouseProducts { get; set; }
         public virtual DbSet<vwPurchaseOrder> vwPurchaseOrders { get; set; }
+        public virtual DbSet<vwPurchaseOrderProductComponent> vwPurchaseOrderProductComponents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
     }
+
+    //----------------------------------------------------------------------------------------------
+    public class FileUploadViewModel
+    {
+        private const string UPLOAD_FOLDER_NAME = @"/assets/uploads";
+        public string FileName { get; set; }
+
+        public string FilePath { get; set; }
+
+        public static FileUploadViewModel ResolveFileUpload(HttpPostedFile file)
+        {
+            var fl = new FileUploadViewModel();
+            fl.FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + Path.GetFileName(file.FileName);
+            fl.FilePath = Path.Combine(HttpContext.Current.Server.MapPath(UPLOAD_FOLDER_NAME), fl.FileName);
+            return fl;
+        }
+
+        public static void DeleteImg(string fileName)
+        {
+            try
+            {
+                string path = Path.Combine(
+                    HttpContext.Current.Server.MapPath(UPLOAD_FOLDER_NAME),
+                    fileName
+                );
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+    }
+
+
 
 
     //----------------------------------------------------------------------------------------------
@@ -48,31 +84,6 @@ namespace iSystemOfUI.Models.PurchaseOrderModels
         public string Name { get; set; }
     }
 
-
-    //----------------------------------------------------------------------------------------------
-    [Table("tblPurchaseOrder")]
-    public partial class tblPurchaseOrder
-    {
-        [Key]
-        public int Code { get; set; }
-
-        public int? CustomerCode { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? DeliveryDate { get; set; }
-
-        public int? ProvineCode { get; set; }
-
-        public int? DistricCode { get; set; }
-
-        public int? WardCode { get; set; }
-
-        [StringLength(200)]
-        public string Address { get; set; }
-
-        [StringLength(200)]
-        public string Notes { get; set; }
-    }
 
     //----------------------------------------------------------------------------------------------
     [Table("tblPurchaseOrderProduct")]
@@ -123,15 +134,34 @@ namespace iSystemOfUI.Models.PurchaseOrderModels
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PurchaseOrderProductCode { get; set; }
+        public int PurchaseOrderCode { get; set; }
 
         [Key]
         [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ProductCode { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ComponentCode { get; set; }
 
         [StringLength(200)]
         public string Image { get; set; }
+
+        public int? ColorCode { get; set; }
+
+        public int? MaterialCode { get; set; }
+
+        [StringLength(50)]
+        public string Width { get; set; }
+
+        [StringLength(50)]
+        public string Depth { get; set; }
+
+        [StringLength(50)]
+        public string Height { get; set; }
+
     }
 
     //----------------------------------------------------------------------------------------------
@@ -160,37 +190,6 @@ namespace iSystemOfUI.Models.PurchaseOrderModels
         public string Name { get; set; }
     }
 
-    //----------------------------------------------------------------------------------------------
-    [Table("tblWarehouse")]
-    public partial class tblWarehouse
-    {
-        [Key]
-        public int Code { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string Name { get; set; }
-
-        [StringLength(200)]
-        public string Notes { get; set; }
-    }
-
-    //----------------------------------------------------------------------------------------------
-    [Table("tblWarehouseProduct")]
-    public partial class tblWarehouseProduct
-    {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int WarehouseCode { get; set; }
-
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ProductCode { get; set; }
-
-        public int Quantity { get; set; }
-    }
 
 
     //----------------------------------------------------------------------------------------------
@@ -276,5 +275,53 @@ namespace iSystemOfUI.Models.PurchaseOrderModels
 
         [StringLength(200)]
         public string PurchaseOrderNotes { get; set; }
+
+        [StringLength(200)]
+        public string PurchaseOrderProductImage { get; set; }
+    }
+
+    //----------------------------------------------------------------------------------------------
+    [Table("vwPurchaseOrderProductComponent")]
+    public partial class vwPurchaseOrderProductComponent
+    {
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PurchaseOrderCode { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ProductCode { get; set; }
+
+        [Key]
+        [Column(Order = 2)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ComponentCode { get; set; }
+
+        [StringLength(200)]
+        public string Image { get; set; }
+
+        public int? ColorCode { get; set; }
+
+        public int? MaterialCode { get; set; }
+
+        [StringLength(50)]
+        public string Width { get; set; }
+
+        [StringLength(50)]
+        public string Depth { get; set; }
+
+        [StringLength(50)]
+        public string Height { get; set; }
+
+        [StringLength(200)]
+        public string MaterialName { get; set; }
+
+        [StringLength(200)]
+        public string ComponentName { get; set; }
+
+        [StringLength(200)]
+        public string ColorName { get; set; }
     }
 }

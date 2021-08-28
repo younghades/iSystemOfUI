@@ -65,7 +65,7 @@
 <!-- modal 1---------------------------------------------------------------------------------->
 <div class="modal fade" tabindex="-1" id="modal-1" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen" role="document">
-        <form id="form_modal1">
+        <form id="form_modal1" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="row" style="width: 95%;">
@@ -85,7 +85,10 @@
                             <tbody>
                                 <tr>
                                     <td colspan="3" style="width: 222mm;" rowspan="13">
-                                        <div id="someId" class="rounded position-relative vPreviewImage" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                        <div class="rounded position-relative vPreviewImage PurchaseOrderProductImageModal" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0">
+                                            <button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button>
+                                            <input name="PurchaseOrderProductImage" type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*">
+                                        </div>
                                     </td>
                                     <th class="PurchaseOrderCodeModal" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;"></th>
                                 </tr>
@@ -125,19 +128,7 @@
                                 <tr>
                                     <td class="text-break text-start PurchaseOrderNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"><br><br></td>
                                 </tr>
-                                <tr>
-                                    <td style="width: 72mm;">
-                                        <div id="someId" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-3" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-2" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-1" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
+                                <tr style="display:flex;flex-direction:row" class="AreaPurchaseOrderProductComponentModal1_2">
                                 </tr>
                             </tbody>
                         </table>
@@ -177,7 +168,7 @@
                             <tbody>
                                 <tr>
                                     <td colspan="3" style="width: 222mm;" rowspan="13">
-                                        <div id="someId-4" class="rounded position-relative vPreviewImage" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*"></div>
+                                        <div class="rounded position-relative vPreviewImage PurchaseOrderProductImageModal" style="width: 215mm;height: 123mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 210mm;height: 123mm;opacity: 0;cursor: pointer;" accept="image/*"></div>
                                     </td>
                                     <th class="PurchaseOrderCodeModal" style="width: 70mm;font-size: 13px;padding: 3px;text-decoration: underline;">ORDER: #000000001</th>
                                 </tr>
@@ -217,19 +208,7 @@
                                 <tr>
                                     <td class="text-break text-start PurchaseOrderNotesModal" style="width: 70mm;font-size: 14px;padding: 2px;"><br><br></td>
                                 </tr>
-                                <tr>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-5" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-3" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-2" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
-                                    <td style="width: 72mm;">
-                                        <div id="someId-1" class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('assets/img/input_image_preview/upload_image.png') center / cover no-repeat;" input-data-index="0"><button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button><input type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*"></div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Chân sau</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:&nbsp;<br>Vật liệu:<br>Màu sắc:<br>Ghi chú:<br></label>
-                                    </td>
+                                <tr style="display:flex;flex-direction:row" class="AreaPurchaseOrderProductComponentModal1_2">
                                 </tr>
                             </tbody>
                         </table>
@@ -238,7 +217,7 @@
                 <div class="modal-footer">
                     <div class="row" style="width: 90%;">
                         <div class="col-8">
-                            <input id="InputTextYKienYeuCauChinhSua" class="form-control" type="text" placeholder="Nhập ý kiến phê duyệt nếu yêu cầu chỉnh sửa">
+                            <input id="InputTextYKienYeuCauChinhSua" name="NoteEdit" class="form-control" type="text" placeholder="Nhập ý kiến phê duyệt nếu yêu cầu chỉnh sửa">
                         </div>
                         <div class="col-4 text-end">
                             <button id="btnYeuCauChinhSuaModal2" class="btn btn-light" type="button">Yêu cầu sửa chữa</button>
@@ -390,6 +369,8 @@
             let form_modal1ID = "form_modal1"
             // thanh selection nhà cung cấp trong modal 1
             let ElementSelectionModal1NhaCungCap = "SelectionModal1NhaCungCap"
+            // khu vực hiển thị các component trong modal1
+            let AreaPurchaseOrderProductComponentModal1_2 = "AreaPurchaseOrderProductComponentModal1_2"
 
             // modal 2
             //-------------------------------------
@@ -436,8 +417,6 @@
             loadPOPSatus(ElementSelectionPOPSatusId)
             // load nhà cung cấp lên element select
             loadManufacture(ElementSelectionNhaCungCapId, true)
-            // load nhà cung cấp lên
-            loadManufacture(ElementSelectionModal1NhaCungCap, true)
 
 
 
@@ -562,6 +541,9 @@
                         item.NotOrderQuantityDeliveryYet = 0
                     }
 
+                    // thêm trường dữ liệu số lượng còn thiết so với số lượng đặt
+                    item.SaleQuantityLack = item.SaleQuantity - item.ProductInventory
+
                     // thêm trường dữ liệu số lượng hàng nhập kho
                     item.QuantityImportToWarehouse = item.OrderQuantityDeliveryed - item.OrderQuantityReturned
                     // thêm trường mô tả chi tiết sản phẩm
@@ -667,7 +649,7 @@
                 // set tên sản phẩm
                 $(".ProductNameModal").html("Tên SP: " + PurchaseOrderSelected.ProductName)
                 // set số lượng khách mua
-                $(".ProductSaleQuantityModal").html("Số lượng: " + PurchaseOrderSelected.SaleQuantity)
+                $(".ProductSaleQuantityModal").html("Số lượng còn thiếu: " + PurchaseOrderSelected.SaleQuantityLack)
                 // set kích thước
                 $(".ProductSizeModal").html("Kích thước: " + PurchaseOrderSelected.ProductWidth + "x" + PurchaseOrderSelected.ProductHeight + "x" + PurchaseOrderSelected.ProductDepth)
                 // set vật liệu sản phẩm
@@ -679,16 +661,21 @@
                 // set ghi chú của toàn đơn hàng
                 $(".PurchaseOrderNotesModal").html(PurchaseOrderSelected.PurchaseOrderNotes)
 
-            }
+                if (PurchaseOrderSelected.PurchaseOrderProductImage != null) {
+                    // nếu có hình thì load hình lên
+                    $(".PurchaseOrderProductImageModal").css('background', 'url(/assets/uploads/' + PurchaseOrderSelected.PurchaseOrderProductImage + ')')
+                } else {
+                    // nếu không có hình thì để hình mặc định
+                    $(".PurchaseOrderProductImageModal").css('background', `url('assets/img/input_image_preview/upload_image.png')`)
+                }
 
+            }
             // Event
             //----------------------------------------------------
             // load danh sách các đơn hàng theo trang thái vừa thay đổi
             $(`#${ElementSelectionPOPSatusId}`).change(e => {
-                // get dữ liệu danh sách các đơn hàng theo trạng thái
-                getPurchaseOrder($(e.target).val())
-                // tạo bảng dữ liệu và hiển thị bảng dữ liệu vừa load ở bước trên
-                LoadDataTableByPurchaseOrderStatusCode($(e.target).val())
+                // load danh sách đơn hàng
+                loadData()
             })
 
 
@@ -697,7 +684,7 @@
                 // clone danh sách đơn hàng
                 var data = [...arrPurchaseOrders]
                 if ($(e.target).val() != "") {
-                    data = data.filter(item => item.ManufactureCode == $(e.target).val())
+                    data = data.filter(item => item.ManufactureCode == $(e.target).val() && item.PurchaseOrderStatusCode == $(`#${ElementSelectionPOPSatusId}`).val())
                 } else {
                     data = data.filter(item => item.PurchaseOrderStatusCode == $(`#${ElementSelectionPOPSatusId}`).val())
                 }
@@ -729,62 +716,71 @@
                 if (datamodel == "1" || datamodel == "2") {
                     // load các thông tin của đơn hàng được chọn lên modal 1 và 2
                     loadModal1_2Details()
-                }
-                // nếu đơn hàng ở trạng thái chờ xác nhận, load thanh nhà cung câp trong modal 2 dựa vào nhà cung cấp đã đã chọn trước đó của sản phẩm
-                if (datamodel == "2") {
-                    loadManufacture(ElementSelectionModal2NhaCungCap, false, PurchaseOrderSelected.ManufactureName)
+
+                    // load danh sách các component của sản phẩm ở modal 1 và 2 nếu có
+                    loadPurchaseOrderProductComponent()
+
+                    if (datamodel == "1") {
+                        // load danh sách nhà cung cấp cho modal 1
+                        loadManufacture(ElementSelectionModal1NhaCungCap, true, PurchaseOrderSelected.ManufactureName)
+                    }
+                    if (datamodel == "2") {
+                        // load danh sách nhà cung cấp cho modal 2
+                        loadManufacture(ElementSelectionModal2NhaCungCap, false, PurchaseOrderSelected.ManufactureName)
+                    }
                 }
 
             })
 
+
+            // function put data next step
+            function PutPurchaseOrderProductToNextStep(FormId, Step) {
+                Swal.fire({
+                    title: 'Xác nhận tiếp tục?',
+                    showDenyButton: true,
+                    confirmButtonText: `Có`,
+                    denyButtonText: `Không`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        let data = new FormData($(`#${FormId}`)[0])
+                        data.append("ProductCode", PurchaseOrderSelected.ProductCode)
+                        data.append("PurchaseOrderCode", PurchaseOrderSelected.PurchaseOrderCode)
+                        data.append("Step", Step)
+                        $.ajax({
+                            url: routePurchaseOrder + "PutPurchaseOrderProductModalToNextStep",
+                            method: "PUT",
+                            data: data,
+                            processData: false,
+                            contentType: false
+                        }).done(() => {
+                            // load dữ liệu
+                            $(`#${FormId}`)[0].reset()
+                            hideAllModal()
+                            loadData()
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Đã lưu thay đổi',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                    }
+                })
+            }
+
             // ấn nút lưu thông tin ở modal 1
             $(`#${form_modal1ID}`).submit(e => {
                 e.preventDefault()
-                let data = $(e.target).serializeFormJSON()
-                data.ProductCode = PurchaseOrderSelected.ProductCode
-                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
-                $.ajax({
-                    url: routePurchaseOrder + "PutPurchaseOrderProductModal1",
-                    method: "PUT",
-                    data: data
-                }).done(() => {
-                    // load dữ liệu
-                    hideAllModal()
-                    loadData()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Đã lưu thay đổi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                PutPurchaseOrderProductToNextStep(form_modal1ID, 1)
             })
 
 
             // ấn nút lưu thông tin ở modal 2
             $(`#${form_modal2ID}`).submit(e => {
                 e.preventDefault()
-                let data = $(e.target).serializeFormJSON()
-                data.ProductCode = PurchaseOrderSelected.ProductCode
-                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
-                $.ajax({
-                    url: routePurchaseOrder + "PutPurchaseOrderProductModal2",
-                    method: "PUT",
-                    data: data
-                }).done(() => {
-                    // load dữ liệu
-                    hideAllModal()
-                    loadData()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Đã lưu thay đổi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
-
+                $("#InputTextYKienYeuCauChinhSua").removeAttr("name")
+                PutPurchaseOrderProductToNextStep(form_modal2ID, 2)
             })
 
 
@@ -806,52 +802,44 @@
                     })
                 }
                 else {
-                    // update thông tin nhà cung cấp
-                    $.ajax({
-                        url: routePurchaseOrder + "PutPurchaseOrderProductModal2",
-                        method: "PUT",
-                        data: {
-                            ProductCode: PurchaseOrderSelected.ProductCode,
-                            PurchaseOrderCode: PurchaseOrderSelected.PurchaseOrderCode,
-                            NoteEdit: NoteEdit
-                        }
-                    }).done(() => {
-                        // load dữ liệu
-                        hideAllModal()
-                        loadData()
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Đã lưu thay đổi',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                    PutPurchaseOrderProductToNextStep(form_modal2ID, 2)
                 }
             })
+
+            // duyệt hàng loạt modal 2
+            $(`#${ElementBtnDuyetHangLoatId}`).click(e => {
+                Swal.fire({
+                    title: 'Xác nhận tiếp tục duyệt hàng loạt?',
+                    showDenyButton: true,
+                    confirmButtonText: `Có`,
+                    denyButtonText: `Không`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: routePurchaseOrder + "PutPurchaseOrderProductModalToNextStepMulti",
+                            method: "PUT",
+                        }).done(() => {
+                            // load dữ liệu
+                            hideAllModal()
+                            loadData()
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Đã lưu thay đổi',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+
+                    }
+                })
+            })
+
 
             // ấn nút lưu thông tin ở modal 3
             $(`#${form_modal3ID}`).submit(e => {
                 e.preventDefault()
-                let data = $(e.target).serializeFormJSON()
-                data.ProductCode = PurchaseOrderSelected.ProductCode
-                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
-                $.ajax({
-                    url: routePurchaseOrder + "PutPurchaseOrderProductModal3",
-                    method: "PUT",
-                    data: data
-                }).done(() => {
-                    // load dữ liệu
-                    hideAllModal()
-                    loadData()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Đã lưu thay đổi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                PutPurchaseOrderProductToNextStep(form_modal3ID, 3)
             })
 
 
@@ -859,52 +847,51 @@
             // ấn nút lưu thông tin ở modal 4
             $(`#${form_modal4ID}`).submit(e => {
                 e.preventDefault()
-                let data = $(e.target).serializeFormJSON()
-                data.ProductCode = PurchaseOrderSelected.ProductCode
-                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
-                $.ajax({
-                    url: routePurchaseOrder + "PutPurchaseOrderProductModal4",
-                    method: "PUT",
-                    data: data
-                }).done(() => {
-                    // load dữ liệu
-                    hideAllModal()
-                    loadData()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Đã lưu thay đổi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
+                PutPurchaseOrderProductToNextStep(form_modal4ID, 4)
             })
 
 
             // ấn nút lưu thông tin ở modal 5
             $(`#${form_modal5ID}`).submit(e => {
                 e.preventDefault()
-                let data = $(e.target).serializeFormJSON()
-                data.ProductCode = PurchaseOrderSelected.ProductCode
-                data.PurchaseOrderCode = PurchaseOrderSelected.PurchaseOrderCode
+                PutPurchaseOrderProductToNextStep(form_modal5ID, 5)
 
-                $.ajax({
-                    url: routePurchaseOrder + "PutPurchaseOrderProductModal5",
-                    method: "PUT",
-                    data: data
-                }).done(() => {
-                    // load dữ liệu
-                    hideAllModal()
-                    loadData()
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Đã lưu thay đổi',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }).fail(err => alert("Lỗi: " + err.responseJSON.Message))
             })
+
+
+            //// Function load các thông tin thêm của đơn hàng vào modal khi ấn nút mở modal
+            ////---------------------------------------------------------------------------------
+            function loadPurchaseOrderProductComponent() {
+                // ajax lấy danh sách các component
+                $.ajax({
+                    url: routePurchaseOrder + "GetPurchaseOrderProductComponent",
+                    method: "GET",
+                    data: {
+                        ProductCode: PurchaseOrderSelected.ProductCode,
+                        PurchaseOrderCode: PurchaseOrderSelected.PurchaseOrderCode
+                    }
+                }).done(data => {
+                    console.log(data)
+                    $(`.${AreaPurchaseOrderProductComponentModal1_2} td`).remove()
+                    data.forEach(item => {
+                        let img = ""
+                        if (item.Image == null) {
+                            img = 'assets/img/input_image_preview/upload_image.png'
+                        } else {
+                            img = `/assets/uploads/${item.Image}`
+                        }
+                        let html = `<td style="width: 72mm;">`
+                        html += `<div class="rounded position-relative vPreviewImage" style="width: 68mm;height: 40mm;background: url('${img}') center / cover no-repeat;" input-data-index="0">`
+                        html += `<button class="btn d-none close position-sticky vClearPreviewImage" type="button"><span class="bg-white pl-2 pr-2" aria-hidden="true">×</span></button>`
+                        html += `<input name="PurchaseOrderProductComponentImage_${item.ComponentCode}" type="file" class="vInputImage" style="width: 70mm;height: 40mm;opacity: 0;cursor: pointer;" accept="image/*">`
+                        html += `</div><label class="form-label text-uppercase" style="font-weight: bold;text-decoration: underline;font-size: 14px;margin-bottom: 3px;margin-top: 3px;">${item.ComponentName}</label><br><label class="form-label" style="font-size: 14px;margin-bottom: 3px;margin-top: 3px;">Kích thước:${item.Width}x${item.Depth}x${item.Height}&nbsp;<br>Vật liệu: ${item.MaterialName}<br>Màu sắc: ${item.ColorName}<br>Ghi chú:<br></label></td>`
+                        $(`.${AreaPurchaseOrderProductComponentModal1_2}`).append(html)
+                    })
+
+                })
+            }
+
         })
     </script>
 }
+
